@@ -1,0 +1,23 @@
+{% extends 'screener_app/home.html' %}
+
+{% block title %}Upload Resumes{% endblock %}
+
+{% block content %}
+<h2>Upload Resumes</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    Name (for all resumes): <input type="text" name="name" required><br><br>
+
+    Upload Resumes (PDF/DOCX):<br>
+    <input type="file" name="resume_files" multiple required><br><br>
+
+    Select Job Description:<br>
+    <select name="job_description_id" required>
+        {% for jd in job_descriptions %}
+            <option value="{{ jd.id }}">{{ jd.title }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Upload</button>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'screener_app/home.html' %}
+
+{% block title %}Results{% endblock %}
+
+{% block content %}
+<h2>Matching Results</h2>
+<table border="1" style="margin: auto;">
+    <tr>
+        <th>Resume Name</th>
+        <th>Job Description</th>
+        <th>Score</th>
+    </tr>
+    {% for item in results %}
+    <tr>
+        <td>{{ item.resume.name }}</td>
+        <td>{{ item.job_description.title }}</td>
+        <td>{{ item.score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
